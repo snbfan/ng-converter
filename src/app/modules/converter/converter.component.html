@@ -1,0 +1,60 @@
+<header>
+  <div class="container">
+    <h1><a href="/">{{labels.title}}</a></h1>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <form [formGroup]="form" (submit)="submit()" class="form-container">
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>{{labels.amount}}</mat-label>
+          <input matInput formControlName="amount" required autocomplete="off">
+          <mat-error *ngIf="amount.touched && amount.invalid">
+            <span *ngIf="amount.errors.required">{{labels.error_required}}</span>
+            <span *ngIf="amount.errors.pattern">{{labels.error_amount}}</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="currency-wrapper">
+        <div class="currency">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>{{labels.from}}</mat-label>
+            <mat-select matNativeControl formControlName="fromCurrency">
+              <mat-option
+                *ngFor="let currency of rates | keyvalue"
+                [value]="currency.key"
+              >{{currency.key}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="swap">
+          <img (click)="swapCurrencies()" src="/assets/images/swap_horiz.png" [attr.alt]="labels.swap_currencies" />
+        </div>
+        <div class="currency">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>{{labels.to}}</mat-label>
+            <mat-select matNativeControl formControlName="toCurrency">
+              <mat-option
+                *ngFor="let currency of rates | keyvalue"
+                [value]="currency.key">{{currency.key}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <button mat-raised-button type="submit"></button>
+      </div>
+    </form>
+    <ng-container *ngIf="convertedResult !== undefined">
+      <h3>{{labels.converted_amount}}<span class="green">{{convertedResult}}</span></h3>
+    </ng-container>
+  </div>
+</section>
+<section>
+  <ng-container *ngIf="exchangeHistory$ | async as chartData">
+    <app-converter-chart [chartData]="chartData"></app-converter-chart>
+  </ng-container>
+</section>

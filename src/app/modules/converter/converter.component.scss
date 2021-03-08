@@ -1,0 +1,95 @@
+@import '../../../assets/styles/_settings';
+
+mat-form-field {
+  margin-right: $s-size;
+
+  @media(max-width: $small-screen-breakpoint) {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+button {
+  height: 5.9rem;
+  margin-top: 0.3rem;
+  font-size: 3rem;
+  background-color: $ad-green;
+  color: $ad-black;
+
+  @media(max-width: $small-screen-breakpoint) {
+    width: 100%;
+  }
+
+  &:after {
+    content: '>';
+    font-weight: 700;
+  }
+}
+
+img {
+  width: 3rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: $lightgrey;
+  margin-bottom: $m-size;
+
+  @media(max-width: $small-screen-breakpoint) {
+    text-align: center;
+    margin-bottom: $l-size;
+  }
+
+  a {
+    color: $ad-black;
+    text-decoration: none;
+  }
+}
+
+h3 {
+  margin: 3rem 0;
+
+  @media(min-width: $small-screen-breakpoint) {
+    margin-top: 0;
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+
+  @media(max-width: $small-screen-breakpoint) {
+    flex-direction: column;
+  }
+}
+
+.currency-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .currency {
+    @media(max-width: $small-screen-breakpoint) {
+      width: 43%;
+    }
+  }
+}
+
+.swap {
+  text-align: center;
+  cursor: pointer;
+  padding: 2rem 0.5rem 0 0;
+
+  @media(max-width: $small-screen-breakpoint) {
+    padding: 2rem 0 0;
+  }
+
+  mat-icon {
+    font-size: 3rem;
+  }
+}
+
+.green {
+  color: $ad-green;
+}

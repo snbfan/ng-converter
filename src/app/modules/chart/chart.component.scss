@@ -1,0 +1,9 @@
+@import '../../../assets/styles/_settings';
+
+.chart-container {
+  width: $desktop-width;
+
+  @media(max-width: $small-screen-breakpoint) {
+    width: $mobile-width;
+  }
+}

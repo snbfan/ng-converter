@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '../../../node_modules/normalize.css/normalize.css';
+@import 'settings';
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $size-normal;
+}
+
+.container {
+  width: $desktop-width;
+  margin: 0 auto;
+
+  @media(max-width: $small-screen-breakpoint) {
+    width: $mobile-width;
+    margin-top: 0;
+  }
+}
